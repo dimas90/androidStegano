@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.skripsi.androidstegano"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.skripsi.androidstegano.EnkripActivity">
+            android:label="Encrypt File"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.skripsi.androidstegano.DekripAcktivity">
+            android:label="Decrypt File"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.skripsi.androidstegano.ProfileActivity">
+            android:label="Profile"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.skripsi.androidstegano.HelpActivity">
+            android:label="Help"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.skripsi.explorer.Filechoice">
+            android:label="Choice File"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.skripsi.explorer.FilechoiceSisip">
+            android:label="Choice File Sisip"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.skripsi.explorer.FileExplorer">
+            android:label="File Explorer"
+            android:parentActivityName="com.skripsi.androidstegano.MainActivity
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skripsi.androidstegano.MainActivity" />
+        </activity>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    tools:context="com.skripsi.explorer.Filechoice$PlaceholderFragment" >
+
+        <ImageView
+            android:id="@+id/fd_Icon1"
+            android:layout_width="50dip"
+            android:layout_height="50dip" >
+        </ImageView>
+
+        <TextView android:text="@+id/TVfileview1"
+            android:id="@+id/TVfileview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/fd_Icon1"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="5dip"
+            android:textColor="#000000">
+
+
+        </TextView>
+        <TextView android:text="@+id/TVfileview2"
+            android:id="@+id/TVfileview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fd_Icon1"
+            android:layout_below="@+id/TVfileview1"
+            android:layout_marginLeft="10dip"
+            android:textColor="#000000">
+
+        </TextView>
+        <TextView android:text="@+id/TVfileviewDate"
+            android:id="@+id/TVfileviewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TVfileview1"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dip"
+            android:textColor="#000000">
+
+        </TextView>
+</RelativeLayout>

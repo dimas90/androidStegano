@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menubaru"
+    tools:context="com.skripsi.androidaes.DekripAcktivity$PlaceholderFragment" >
+
+    <Button
+        android:id="@+id/btnsimpan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btndekrip"
+        android:layout_marginEnd="84dp"
+        android:background="#ca732d"
+        android:text="Save"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <TableLayout
+        android:layout_width="378dp"
+        android:layout_height="186dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="124dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="108dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewfile"
+                android:layout_width="71dp"
+                android:layout_height="36dp"
+                android:text="File"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="211dp" />
+
+            <TextView
+                android:id="@+id/fileenkrip"
+                android:layout_width="209dp"
+                android:layout_height="36dp"
+                android:text="TextView"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="99dp"
+                tools:layout_editor_absoluteY="27dp" />
+
+            <ImageButton
+                android:id="@+id/btncaridekrip"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="#c9732d"
+                android:textColor="@android:color/background_dark"
+                app:srcCompat="@android:drawable/ic_search_category_default"
+                tools:layout_editor_absoluteX="300dp"
+                tools:layout_editor_absoluteY="27dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewfile2"
+                android:layout_width="91dp"
+                android:layout_height="36dp"
+                android:text="Password"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="211dp" />
+
+            <TextView
+                android:id="@+id/passkeydekrip"
+                android:layout_width="141dp"
+                android:layout_height="36dp"
+                android:text="TextView"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="99dp"
+                tools:layout_editor_absoluteY="27dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewfile3"
+                android:layout_width="93dp"
+                android:layout_height="36dp"
+                android:text="Hasil "
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="211dp" />
+
+            <TextView
+                android:id="@+id/hasilenkrip"
+                android:layout_width="141dp"
+                android:layout_height="36dp"
+                android:text="TextView"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="99dp"
+                tools:layout_editor_absoluteY="27dp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewfile4"
+                android:layout_width="71dp"
+                android:layout_height="36dp"
+                android:text="Sisipkan"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="211dp" />
+
+            <TextView
+                android:id="@+id/filetambah"
+                android:layout_width="209dp"
+                android:layout_height="36dp"
+                android:text="TextView"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="99dp"
+                tools:layout_editor_absoluteY="27dp" />
+
+            <ImageButton
+                android:id="@+id/btnsisip"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="#c9732d"
+                android:textColor="@android:color/background_dark"
+                app:srcCompat="@android:drawable/ic_search_category_default"
+                tools:layout_editor_absoluteX="300dp"
+                tools:layout_editor_absoluteY="27dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:fontFamily="sans-serif"
+        android:text="File Decrypt"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <Button
+        android:id="@+id/btndekrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="228dp"
+        android:layout_marginStart="85dp"
+        android:background="#ca732d"
+        android:text="Decrypt"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+</RelativeLayout>

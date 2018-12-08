@@ -1,0 +1,204 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menubaru"
+    tools:context="com.skripsi.androidaes.EnkripActivity$PlaceholderFragment" >
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:text="File Encrypt"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="28dp" />
+
+
+    <TextView
+        android:id="@+id/textViewfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="-81dp"
+        android:layout_marginTop="130dp"
+        android:layout_toStartOf="@+id/btnenkrip"
+        android:text="File"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/filedapat"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewfile"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="110dp"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:singleLine="true"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <ImageButton
+        android:id="@+id/btncari"
+        android:layout_width="38dp"
+        android:layout_height="37dp"
+        android:layout_alignBottom="@+id/textViewfile"
+        android:layout_alignStart="@+id/btnsisip"
+        android:layout_marginBottom="-2dp"
+        android:background="#c9732d"
+        android:textColor="@android:color/background_dark"
+        app:srcCompat="@android:drawable/ic_search_category_default"
+        tools:layout_editor_absoluteX="300dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+
+    <TextView
+        android:id="@+id/textViewfile4"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="203dp"
+        android:layout_marginTop="270dp"
+        android:layout_toStartOf="@+id/btnsisip"
+        android:text="Sisipkan"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <EditText
+        android:id="@+id/filetambah"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewfile4"
+        android:layout_alignStart="@+id/filedapat"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:singleLine="true"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <ImageButton
+        android:id="@+id/btnsisip"
+        android:layout_width="38dp"
+        android:layout_height="37dp"
+        android:layout_alignBottom="@+id/textViewfile4"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="38dp"
+        android:background="#c9732d"
+        android:textColor="@android:color/background_dark"
+        app:srcCompat="@android:drawable/ic_search_category_default"
+        tools:layout_editor_absoluteX="300dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <TextView
+        android:id="@+id/textViewfile2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="180dp"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <EditText
+        android:id="@+id/passkey"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewfile2"
+        android:layout_alignStart="@+id/filedapat"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <TextView
+        android:id="@+id/textViewfile3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="220dp"
+        android:text="Hasil "
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <EditText
+        android:id="@+id/hasilenkrip"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/filedapat"
+        android:layout_alignBaseline="@+id/textViewfile3"
+        android:layout_centerVertical="true"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:singleLine="true"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+
+    <Button
+        android:id="@+id/btnenkrip"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="141dp"
+        android:layout_marginStart="59dp"
+        android:background="#ca732d"
+        android:ems="6"
+        android:text="Encrypt"
+
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="211dp"/>
+
+    <Button
+        android:id="@+id/btnsimpan"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="141dp"
+        android:layout_marginStart="212dp"
+        android:layout_toStartOf="@+id/btncari"
+        android:background="#ca732d"
+        android:ems="6"
+        android:text="Embed"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+
+
+</RelativeLayout>
