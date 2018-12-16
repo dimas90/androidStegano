@@ -17,7 +17,7 @@ import com.skripsi.explorer.FilechoiceSisip;
 
 import java.io.File;
 
-public class DekripActivity extends AppCompatActivity{
+public class DekripActivity extends AppCompatActivity {
 
     String ambil;
     String sisip;
@@ -35,12 +35,12 @@ public class DekripActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dekrip_fragment);
 
-            editfile = (EditText) findViewById(R.id.filedapat);
-            editsisip = (EditText) findViewById(R.id.fileenkrip);
-            edithasil = (EditText) findViewById(R.id.filehasil);
+        editfile = (EditText) findViewById(R.id.filedapat);
+        editsisip = (EditText) findViewById(R.id.fileenkrip);
+        edithasil = (EditText) findViewById(R.id.filehasil);
 
         ImageButton load = (ImageButton) findViewById(R.id.btncari);
-        load.setOnClickListener(new View.OnClickListener(){
+        load.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -51,7 +51,7 @@ public class DekripActivity extends AppCompatActivity{
             }
         });
         ImageButton sisip = (ImageButton) findViewById(R.id.btnfe);
-        sisip.setOnClickListener(new View.OnClickListener(){
+        sisip.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -74,11 +74,12 @@ public class DekripActivity extends AppCompatActivity{
     }
 
     public void getfile() {
-        Intent intent1 = new Intent (this, Filechoice.class);
+        Intent intent1 = new Intent(this, Filechoice.class);
         startActivityForResult(intent1, REQUEST_PATH);
     }
+
     public void getsisip() {
-        Intent intent2 = new Intent (this, FilechoiceSisip.class);
+        Intent intent2 = new Intent(this, FilechoiceSisip.class);
         startActivityForResult(intent2, REQUEST_PATH);
     }
 
@@ -86,13 +87,13 @@ public class DekripActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         System.out.println(requestCode);
-        if (requestCode == REQUEST_PATH){
-            if(resultCode == RESULT_OK){
+        if (requestCode == REQUEST_PATH) {
+            if (resultCode == RESULT_OK) {
 
-                if(data.getExtras().containsKey("GetFileName")){
+                if (data.getExtras().containsKey("GetFileName")) {
                     namafile = data.getStringExtra("GetFileName");
                     editfile.setText(namafile);
-                }else if(data.getExtras().containsKey("GetFileName1")) {
+                } else if (data.getExtras().containsKey("GetFileName1")) {
                     namasisip = data.getStringExtra("GetFileName1");
                     editsisip.setText(namasisip);
 

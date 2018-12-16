@@ -5,21 +5,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import android.widget.Toast;
+
 import com.skripsi.explorer.Filechoice;
 import com.skripsi.explorer.FilechoiceSisip;
 
 import java.io.File;
 
-public class EnkripActivity extends AppCompatActivity{
+public class EnkripActivity extends AppCompatActivity {
 
     String ambil;
     String sisip;
@@ -32,18 +35,43 @@ public class EnkripActivity extends AppCompatActivity{
     EditText editpassword;
     EditText edithasil;
     EditText editsisip;
+    Button Encode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enkrip_fragment);
 
-            editfile = (EditText) findViewById(R.id.filedapat);
-            edithasil = (EditText) findViewById(R.id.hasilenkrip);
-            editsisip = (EditText) findViewById(R.id.filetambah);
+        editfile = (EditText) findViewById(R.id.filedapat);
+        edithasil = (EditText) findViewById(R.id.hasilenkrip);
+        editsisip = (EditText) findViewById(R.id.filetambah);
+        Encode = (Button) findViewById(R.id.btnencode);
+        Encode.setEnabled(false);
+
+        editfile.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getfile();
+                // TODO Auto-generated method stub
+
+
+            }
+        });
+
+        editsisip.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getsisip();
+                // TODO Auto-generated method stub
+
+
+            }
+        });
 
         ImageButton load = (ImageButton) findViewById(R.id.btncari);
-        load.setOnClickListener(new View.OnClickListener(){
+        load.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -54,7 +82,7 @@ public class EnkripActivity extends AppCompatActivity{
             }
         });
         ImageButton sisip = (ImageButton) findViewById(R.id.btnsisip);
-        sisip.setOnClickListener(new View.OnClickListener(){
+        sisip.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -77,11 +105,12 @@ public class EnkripActivity extends AppCompatActivity{
     }
 
     public void getfile() {
-        Intent intent1 = new Intent (this, Filechoice.class);
+        Intent intent1 = new Intent(this, Filechoice.class);
         startActivityForResult(intent1, REQUEST_PATH);
     }
+
     public void getsisip() {
-        Intent intent2 = new Intent (this, FilechoiceSisip.class);
+        Intent intent2 = new Intent(this, FilechoiceSisip.class);
         startActivityForResult(intent2, REQUEST_PATH);
     }
 
@@ -89,15 +118,17 @@ public class EnkripActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         System.out.println(requestCode);
-        if (requestCode == REQUEST_PATH){
-            if(resultCode == RESULT_OK){
+        if (requestCode == REQUEST_PATH) {
+            if (resultCode == RESULT_OK) {
 
-                if(data.getExtras().containsKey("GetFileName")){
+                if (data.getExtras().containsKey("GetFileName")) {
                     namafile = data.getStringExtra("GetFileName");
                     editfile.setText(namafile);
-                }else if(data.getExtras().containsKey("GetFileName1")) {
+                    editfile.setEnabled(false);
+                } else if (data.getExtras().containsKey("GetFileName1")) {
                     namasisip = data.getStringExtra("GetFileName1");
                     editsisip.setText(namasisip);
+                    editsisip.setEnabled(false);
 
 
                 }

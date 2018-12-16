@@ -13,9 +13,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     static private Context context;
+
     public static Context getAppContext() {
         return MainActivity.context;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,23 +26,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void onclick(View view) {
         if (view.getId() == R.id.enkrip)
-            startActivity(new Intent(getApplicationContext(),EnkripActivity.class));
+            startActivity(new Intent(getApplicationContext(), EnkripActivity.class));
         if (view.getId() == R.id.enkrip1)
-            startActivity(new Intent(getApplicationContext(),EnkripActivity.class));
+            startActivity(new Intent(getApplicationContext(), EnkripActivity.class));
         if (view.getId() == R.id.dekrip)
-            startActivity(new Intent(getApplicationContext(),DekripActivity.class));
+            startActivity(new Intent(getApplicationContext(), DekripActivity.class));
         if (view.getId() == R.id.dekrip1)
-            startActivity(new Intent(getApplicationContext(),DekripActivity.class));
+            startActivity(new Intent(getApplicationContext(), DekripActivity.class));
         if (view.getId() == R.id.bantuan)
-            startActivity(new Intent(getApplicationContext(),HelpActivity.class));
+            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
         if (view.getId() == R.id.bantuan1)
-            startActivity(new Intent(getApplicationContext(),HelpActivity.class));
+            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
         if (view.getId() == R.id.profile)
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         if (view.getId() == R.id.profile1)
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-        if (view.getId() == R.id.keluar)
-        {
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        if (view.getId() == R.id.keluar) {
             AlertDialog.Builder ad = new AlertDialog.Builder(this);
             ad.setMessage("Apakah Anda Benar-Benar ingin keluar?");
             ad.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
