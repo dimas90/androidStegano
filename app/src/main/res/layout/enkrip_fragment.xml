@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menubaru"
-    tools:context="com.skripsi.androidaes.EnkripActivity$PlaceholderFragment" >
+    tools:context="com.skripsi.androidstegano.EnkripActivity$PlaceholderFragment" >
 
 
     <TextView
@@ -67,42 +67,11 @@
         tools:layout_editor_absoluteX="300dp"
         tools:layout_editor_absoluteY="27dp" />
 
-
-    <TextView
-        android:id="@+id/textViewfile4"
-        android:layout_width="75dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="203dp"
-        android:layout_marginTop="270dp"
-        android:layout_toStartOf="@+id/btnsisip"
-        android:text="Sisipkan"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="211dp" />
-
-    <EditText
-        android:id="@+id/filetambah"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textViewfile4"
-        android:layout_alignStart="@+id/filedapat"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:singleLine="true"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="27dp" />
-
     <ImageButton
         android:id="@+id/btnsisip"
         android:layout_width="38dp"
         android:layout_height="37dp"
-        android:layout_alignBottom="@+id/textViewfile4"
+        android:layout_alignBottom="@+id/textViewfile3"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="38dp"
         android:background="#c9732d"
@@ -117,9 +86,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="180dp"
-        android:text="Password"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="182dp"
+        android:text="Hasil"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="20dp"
@@ -128,7 +97,7 @@
         tools:layout_editor_absoluteY="211dp" />
 
     <EditText
-        android:id="@+id/passkey"
+        android:id="@+id/hasilenkrip"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewfile2"
@@ -143,10 +112,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="220dp"
-        android:text="Hasil "
+        android:layout_centerVertical="true"
+        android:layout_marginTop="134dp"
+        android:layout_marginStart="27dp"
+        android:text="Sisipkan"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="20dp"
@@ -155,16 +124,15 @@
         tools:layout_editor_absoluteY="211dp" />
 
     <EditText
-        android:id="@+id/hasilenkrip"
+        android:id="@+id/filetambah"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/filedapat"
-        android:layout_alignBaseline="@+id/textViewfile3"
         android:layout_centerVertical="true"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:singleLine="true"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="99dp"
         tools:layout_editor_absoluteY="27dp" />
 
@@ -185,7 +153,7 @@
         tools:layout_editor_absoluteY="211dp"/>
 
     <Button
-        android:id="@+id/btnsimpan"
+        android:id="@+id/btnencode"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -195,7 +163,7 @@
         android:layout_toStartOf="@+id/btncari"
         android:background="#ca732d"
         android:ems="6"
-        android:text="Embed"
+        android:text="Encode"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
 

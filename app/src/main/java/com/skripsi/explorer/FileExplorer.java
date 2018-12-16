@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.skripsi.androidaes.R;
+import com.skripsi.androidstegano.R;
 
 public class FileExplorer extends Activity {
 

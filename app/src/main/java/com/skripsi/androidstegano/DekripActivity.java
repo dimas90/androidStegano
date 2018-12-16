@@ -1,6 +1,5 @@
 package com.skripsi.androidstegano;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,13 +12,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import android.widget.Toast;
 import com.skripsi.explorer.Filechoice;
 import com.skripsi.explorer.FilechoiceSisip;
 
 import java.io.File;
 
-public class EnkripActivity extends AppCompatActivity{
+public class DekripActivity extends AppCompatActivity{
 
     String ambil;
     String sisip;
@@ -29,18 +27,17 @@ public class EnkripActivity extends AppCompatActivity{
     String namafile;
     String namasisip;
     EditText editfile;
-    EditText editpassword;
     EditText edithasil;
     EditText editsisip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.enkrip_fragment);
+        setContentView(R.layout.dekrip_fragment);
 
             editfile = (EditText) findViewById(R.id.filedapat);
-            edithasil = (EditText) findViewById(R.id.hasilenkrip);
-            editsisip = (EditText) findViewById(R.id.filetambah);
+            editsisip = (EditText) findViewById(R.id.fileenkrip);
+            edithasil = (EditText) findViewById(R.id.filehasil);
 
         ImageButton load = (ImageButton) findViewById(R.id.btncari);
         load.setOnClickListener(new View.OnClickListener(){
@@ -53,7 +50,7 @@ public class EnkripActivity extends AppCompatActivity{
 
             }
         });
-        ImageButton sisip = (ImageButton) findViewById(R.id.btnsisip);
+        ImageButton sisip = (ImageButton) findViewById(R.id.btnfe);
         sisip.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -109,7 +106,7 @@ public class EnkripActivity extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.encryp, menu);
+        getMenuInflater().inflate(R.menu.decryp, menu);
         return true;
     }
 
@@ -133,7 +130,7 @@ public class EnkripActivity extends AppCompatActivity{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.enkrip_fragment,
+            View rootView = inflater.inflate(R.layout.dekrip_fragment,
                     container, false);
             return rootView;
         }

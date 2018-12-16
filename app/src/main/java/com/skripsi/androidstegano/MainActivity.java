@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         if (view.getId() == R.id.enkrip1)
             startActivity(new Intent(getApplicationContext(),EnkripActivity.class));
         if (view.getId() == R.id.dekrip)
-            startActivity(new Intent(getApplicationContext(),DekripAcktivity.class));
+            startActivity(new Intent(getApplicationContext(),DekripActivity.class));
         if (view.getId() == R.id.dekrip1)
-            startActivity(new Intent(getApplicationContext(),DekripAcktivity.class));
+            startActivity(new Intent(getApplicationContext(),DekripActivity.class));
         if (view.getId() == R.id.bantuan)
             startActivity(new Intent(getApplicationContext(),HelpActivity.class));
         if (view.getId() == R.id.bantuan1)
