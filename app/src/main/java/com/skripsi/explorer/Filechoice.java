@@ -32,8 +32,8 @@ public class Filechoice extends ListActivity {
         super.onCreate(savedInstanceState);
 
 //		currentDir = new File(Environment.getExternalStorageDirectory());
-//		fill("/sdcard/");
-        fill(Environment.getRootDirectory());
+		fill(new File("/sdcard"));
+//        fill(Environment.getExternalStorageDirectory());
     }
 
     private void fill(File f) {
@@ -76,7 +76,8 @@ public class Filechoice extends ListActivity {
         Collections.sort(dir);
         Collections.sort(fls);
         dir.addAll(fls);
-        if (!f.getName().equalsIgnoreCase("system"))
+        System.out.println("Masuk " + f.getName());
+        if (!f.getName().equalsIgnoreCase("sdcard"))
             dir.add(0, new Item("..", "Parent Directory", "", f.getParent(), "directory_up"));
         adapter = new FileArrayAdapter1(Filechoice.this, R.layout.fileview, dir);
         this.setListAdapter(adapter);

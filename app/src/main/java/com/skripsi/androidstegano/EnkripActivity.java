@@ -3,6 +3,7 @@ package com.skripsi.androidstegano;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -17,16 +18,22 @@ import android.widget.ImageButton;
 
 import android.widget.Toast;
 
+import com.skripsi.algo.BouncyCastleProvider_AES_CBC;
 import com.skripsi.explorer.Filechoice;
 import com.skripsi.explorer.FilechoiceSisip;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 public class EnkripActivity extends AppCompatActivity {
 
+    private static final int REQUEST_PATH = 1;
     String ambil;
     String sisip;
-    private static final int REQUEST_PATH = 1;
     File filedata;
     File filesisip;
     String namafile;
@@ -36,16 +43,21 @@ public class EnkripActivity extends AppCompatActivity {
     EditText edithasil;
     EditText editsisip;
     Button Encode;
+    Button Encrypt;
+    private ImageButton load;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final BouncyCastleProvider_AES_CBC AESncrypt = new BouncyCastleProvider_AES_CBC();
         setContentView(R.layout.enkrip_fragment);
 
         editfile = (EditText) findViewById(R.id.filedapat);
         edithasil = (EditText) findViewById(R.id.hasilenkrip);
         editsisip = (EditText) findViewById(R.id.filetambah);
         Encode = (Button) findViewById(R.id.btnencode);
+        Encrypt = (Button) findViewById(R.id.btnenkrip);
         Encode.setEnabled(false);
 
         editfile.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +79,37 @@ public class EnkripActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
 
+            }
+        });
+
+        Encrypt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+              try {
+                  AESncrypt.InitCiphers();
+                  File f = new File("/sdcard"+File.separator+"data"+File.separator+"output.enc");
+                  File dir = new File("/sdcard"+File.separator+"data");
+                    System.out.println(f.getAbsolutePath());
+
+                      if(!dir.exists()){
+                          dir.mkdirs();
+                      }
+
+                      f.createNewFile();
+
+                  OutputStream OS = new FileOutputStream(
+                          new File("/sdcard"+File.separator+"data"+File.separator+"output.enc"));
+
+
+                 InputStream IS = new FileInputStream(new File(editfile.getText().toString()));
+
+                 AESncrypt.CBCEncrypt(IS,OS);
+
+
+              }catch (Exception e){
+                  e.printStackTrace();
+              }
             }
         });
 
@@ -92,16 +135,6 @@ public class EnkripActivity extends AppCompatActivity {
 
             }
         });
-
-//        set nama bar layout
-//   getSupportActionBar().setTitle("Encrypt File");
-//        ini buat warna bar
-//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#A4C639")));
-
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.container, new EnkripActivity.PlaceholderFragment()).commit();
-//        }
     }
 
     public void getfile() {
