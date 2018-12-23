@@ -73,6 +73,10 @@ public class FilechoiceSisip extends ListActivity {
 
         }
 
+
+
+
+
         Collections.sort(dir);
         Collections.sort(fls);
         dir.addAll(fls);
