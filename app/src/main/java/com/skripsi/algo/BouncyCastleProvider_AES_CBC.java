@@ -102,7 +102,7 @@ public class BouncyCastleProvider_AES_CBC {
             BadPaddingException
     {
         //optionally put the IV at the beggining of the cipher file
-        //fos.write(IV, 0, IV.length);
+        fos.write(IV, 0, IV.length);
 
         byte[] buffer = new byte[blockSize];
         int noBytes = 0;
@@ -127,12 +127,11 @@ public class BouncyCastleProvider_AES_CBC {
             throws IOException,
             ShortBufferException,
             IllegalBlockSizeException,
-            BadPaddingException
-    {
+            BadPaddingException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, InvalidAlgorithmParameterException {
         // get the IV from the file
         // DO NOT FORGET TO reinit the cipher with the IV
-        //fis.read(IV,0,IV.length);
-        //this.InitCiphers();
+        fis.read(IV,0,IV.length);
+        this.InitCiphers();
 
         byte[] buffer = new byte[blockSize];
         int noBytes = 0;

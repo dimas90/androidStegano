@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skripsi.algo.BouncyCastleProvider_AES_CBC;
@@ -77,6 +79,9 @@ public class EnkripActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getsisip();
                 // TODO Auto-generated method stub
+                if (editsisip.getText() != null){
+                    Encode.setEnabled(true);
+                }
 
 
             }
@@ -87,24 +92,54 @@ public class EnkripActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               try {
+
                   AESncrypt.InitCiphers();
-                  File f = new File("/sdcard"+File.separator+"data"+File.separator+"output.enc");
+                  File master = new File(editfile.getText().toString());
+                  File f = new File("/sdcard"+File.separator+"data"+File.separator+master.getName()+".enc");
                   File dir = new File("/sdcard"+File.separator+"data");
-                    System.out.println(f.getAbsolutePath());
+//                  File output = new File("/sdcard"+File.separator+"hasil");
+//                    System.out.println("Masuk "+master.getName());
 
                       if(!dir.exists()){
                           dir.mkdirs();
                       }
 
+//                      if(!output.exists()){
+//                          output.mkdirs();
+//                      }
+
                       f.createNewFile();
 
-                  OutputStream OS = new FileOutputStream(
-                          new File("/sdcard"+File.separator+"data"+File.separator+"output.enc"));
+                  OutputStream OS = new FileOutputStream(f);
 
 
                  InputStream IS = new FileInputStream(new File(editfile.getText().toString()));
 
                  AESncrypt.CBCEncrypt(IS,OS);
+
+                  edithasil.setText(f.getAbsolutePath());
+                  edithasil.setEnabled(false);
+
+
+                  LayoutInflater inflater = getLayoutInflater();
+                  View layout = inflater.inflate(R.layout.custom_toast,
+                          (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                  TextView text = (TextView) layout.findViewById(R.id.text);
+                  text.setText("Berhasil Enkripsi data !!");
+
+                  Toast toast = new Toast(getApplicationContext());
+                  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                  toast.setDuration(Toast.LENGTH_LONG);
+                  toast.setView(layout);
+                  toast.show();
+
+//
+//                 InputStream inputStream = new FileInputStream(f);
+//                 String file_out = f.getName().substring(0, f.getName().length() - 4);
+//                 OutputStream outputStream = new FileOutputStream(output+File.separator+file_out);
+//
+//                 AESncrypt.CBCDecrypt(inputStream, outputStream);
 
 
               }catch (Exception e){
@@ -150,7 +185,7 @@ public class EnkripActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        System.out.println(requestCode);
+//        System.out.println(requestCode);
         if (requestCode == REQUEST_PATH) {
             if (resultCode == RESULT_OK) {
 
@@ -162,6 +197,7 @@ public class EnkripActivity extends AppCompatActivity {
                     namasisip = data.getStringExtra("GetFileName1");
                     editsisip.setText(namasisip);
                     editsisip.setEnabled(false);
+                    Encode.setEnabled(true);
 
 
                 }
