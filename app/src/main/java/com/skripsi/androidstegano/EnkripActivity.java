@@ -2,6 +2,7 @@ package com.skripsi.androidstegano;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.ImageButton;
 
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.skripsi.algo.BouncyCastleProvider_AES_CBC;
 import com.skripsi.explorer.Filechoice;
@@ -198,6 +200,10 @@ public class EnkripActivity extends AppCompatActivity {
                     editsisip.setText(namasisip);
                     editsisip.setEnabled(false);
                     Encode.setEnabled(true);
+                    Uri uri = Uri.parse(editsisip.getText().toString());
+                    VideoView simpleVideoView = (VideoView) findViewById(R.id.videoView); // initiate a video view
+                    simpleVideoView.setVideoURI(uri);
+                    simpleVideoView.start();
 
 
                 }

@@ -33,7 +33,7 @@ public class FilechoiceSisip extends ListActivity {
 
 //		currentDir = new File(Environment.getExternalStorageDirectory());
 //		fill("/sdcard/");
-        fill(Environment.getRootDirectory());
+        fill(new File("/sdcard"));
     }
 
     private void fill(File f) {
@@ -74,14 +74,11 @@ public class FilechoiceSisip extends ListActivity {
         }
 
 
-
-
-
         Collections.sort(dir);
         Collections.sort(fls);
         dir.addAll(fls);
         System.out.println("Masuk Pak Eko " + f.getName());
-        if (!f.getName().equalsIgnoreCase("system"))
+        if (!f.getName().equalsIgnoreCase("sdcard"))
             dir.add(0, new Item("..", "Parent Directory", "", f.getParent(), "directory_up"));
         adapter = new FileArrayAdapter(FilechoiceSisip.this, R.layout.fileview, dir);
         this.setListAdapter(adapter);

@@ -42,15 +42,15 @@
 
     <EditText
         android:id="@+id/filedapat"
-        android:layout_width="175dp"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewfile"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="110dp"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:layout_marginStart="133dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:singleLine="true"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
         tools:layout_editor_absoluteX="99dp"
         tools:layout_editor_absoluteY="27dp" />
 
@@ -73,7 +73,8 @@
         android:layout_height="37dp"
         android:layout_alignBottom="@+id/textViewfile3"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="38dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="-1dp"
         android:background="#c9732d"
         android:textColor="@android:color/background_dark"
         app:srcCompat="@android:drawable/ic_search_category_default"
@@ -98,7 +99,7 @@
 
     <EditText
         android:id="@+id/hasilenkrip"
-        android:layout_width="175dp"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewfile2"
         android:layout_alignStart="@+id/filedapat"
@@ -111,10 +112,11 @@
         android:id="@+id/textViewfile3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/hasilenkrip"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="134dp"
-        android:layout_marginStart="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="Sisipkan"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
@@ -125,10 +127,12 @@
 
     <EditText
         android:id="@+id/filetambah"
-        android:layout_width="175dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/hasilenkrip"
         android:layout_alignStart="@+id/filedapat"
-        android:layout_centerVertical="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="19dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:singleLine="true"
         android:textAlignment="textStart"
@@ -141,25 +145,24 @@
         android:id="@+id/btnenkrip"
         android:layout_width="84dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="141dp"
-        android:layout_marginStart="59dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginBottom="34dp"
         android:background="#ca732d"
         android:ems="6"
         android:text="Encrypt"
 
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="211dp"/>
+        tools:layout_editor_absoluteY="211dp" />
 
     <Button
         android:id="@+id/btnencode"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="141dp"
-        android:layout_marginStart="212dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginBottom="34dp"
         android:layout_toStartOf="@+id/btncari"
         android:background="#ca732d"
         android:ems="6"
@@ -167,6 +170,24 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
 
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="160dp"
+        android:layout_height="148dp"
+        android:layout_alignStart="@+id/textViewfile2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-27dp"
+        android:layout_marginBottom="112dp"
+        android:paddingRight="10dp" />
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="160dp"
+        android:layout_height="148dp"
+        android:layout_alignEnd="@+id/btnencode"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-52dp"
+        android:layout_marginBottom="111dp" />
 
 
 </RelativeLayout>
