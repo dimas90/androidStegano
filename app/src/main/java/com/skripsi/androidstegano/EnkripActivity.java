@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -32,6 +33,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 
 public class EnkripActivity extends AppCompatActivity {
 
@@ -55,6 +57,7 @@ public class EnkripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final BouncyCastleProvider_AES_CBC AESncrypt = new BouncyCastleProvider_AES_CBC();
+
         setContentView(R.layout.enkrip_fragment);
 
         editfile = (EditText) findViewById(R.id.filedapat);
@@ -81,7 +84,7 @@ public class EnkripActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getsisip();
                 // TODO Auto-generated method stub
-                if (editsisip.getText() != null){
+                if (editsisip.getText() != null) {
                     Encode.setEnabled(true);
                 }
 
@@ -93,48 +96,42 @@ public class EnkripActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-              try {
+                try {
 
-                  AESncrypt.InitCiphers();
-                  File master = new File(editfile.getText().toString());
-                  File f = new File("/sdcard"+File.separator+"data"+File.separator+master.getName()+".enc");
-                  File dir = new File("/sdcard"+File.separator+"data");
-//                  File output = new File("/sdcard"+File.separator+"hasil");
-//                    System.out.println("Masuk "+master.getName());
+                    AESncrypt.InitCiphers();
+                    File master = new File(editfile.getText().toString());
+                    File f = new File("/sdcard" + File.separator + "data" + File.separator + master.getName() + ".enc");
+                    File dir = new File("/sdcard" + File.separator + "data");
 
-                      if(!dir.exists()){
-                          dir.mkdirs();
-                      }
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
 
-//                      if(!output.exists()){
-//                          output.mkdirs();
-//                      }
+                    f.createNewFile();
 
-                      f.createNewFile();
-
-                  OutputStream OS = new FileOutputStream(f);
+                    OutputStream OS = new FileOutputStream(f);
 
 
-                 InputStream IS = new FileInputStream(new File(editfile.getText().toString()));
+                    InputStream IS = new FileInputStream(new File(editfile.getText().toString()));
 
-                 AESncrypt.CBCEncrypt(IS,OS);
+                    AESncrypt.CBCEncrypt(IS, OS);
 
-                  edithasil.setText(f.getAbsolutePath());
-                  edithasil.setEnabled(false);
+                    edithasil.setText(f.getAbsolutePath());
+                    edithasil.setEnabled(false);
 
 
-                  LayoutInflater inflater = getLayoutInflater();
-                  View layout = inflater.inflate(R.layout.custom_toast,
-                          (ViewGroup) findViewById(R.id.custom_toast_container));
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.custom_toast,
+                            (ViewGroup) findViewById(R.id.custom_toast_container));
 
-                  TextView text = (TextView) layout.findViewById(R.id.text);
-                  text.setText("Berhasil Enkripsi data !!");
+                    TextView text = (TextView) layout.findViewById(R.id.text);
+                    text.setText("Berhasil Enkripsi data !!");
 
-                  Toast toast = new Toast(getApplicationContext());
-                  toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                  toast.setDuration(Toast.LENGTH_LONG);
-                  toast.setView(layout);
-                  toast.show();
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
 
 //
 //                 InputStream inputStream = new FileInputStream(f);
@@ -144,9 +141,25 @@ public class EnkripActivity extends AppCompatActivity {
 //                 AESncrypt.CBCDecrypt(inputStream, outputStream);
 
 
-              }catch (Exception e){
-                  e.printStackTrace();
-              }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Encode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               try {
+                   File MasterHasil = new File(edithasil.getText().toString());
+                   File MasterEncode = new File(editsisip.getText().toString());
+
+
+
+               }catch (Exception e){
+                   e.printStackTrace();
+               }
+
             }
         });
 
@@ -200,9 +213,12 @@ public class EnkripActivity extends AppCompatActivity {
                     editsisip.setText(namasisip);
                     editsisip.setEnabled(false);
                     Encode.setEnabled(true);
+                    MediaController mediaController = new MediaController(this);
+
                     Uri uri = Uri.parse(editsisip.getText().toString());
                     VideoView simpleVideoView = (VideoView) findViewById(R.id.videoView); // initiate a video view
                     simpleVideoView.setVideoURI(uri);
+                    simpleVideoView.setMediaController(mediaController);
                     simpleVideoView.start();
 
 
