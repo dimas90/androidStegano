@@ -28,12 +28,12 @@
 
     <TextView
         android:id="@+id/textViewfile"
-        android:layout_width="wrap_content"
+        android:layout_width="53dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="-75dp"
-        android:layout_marginTop="130dp"
-        android:layout_toStartOf="@+id/btndekrip"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="131dp"
         android:text="File"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
@@ -87,8 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="182dp"
+        android:layout_marginTop="194dp"
         android:text="File Encrypt"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
@@ -114,10 +113,9 @@
         android:id="@+id/textViewfile3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="134dp"
+        android:layout_alignEnd="@+id/textViewfile"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="263dp"
         android:text="Hasil"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
@@ -142,31 +140,27 @@
 
 
     <Button
-        android:id="@+id/btndekrip"
-        android:layout_width="84dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="141dp"
-        android:layout_marginStart="59dp"
-        android:background="#ca732d"
-        android:ems="6"
-        android:text="Decrypt"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="211dp"/>
-
-    <Button
         android:id="@+id/btndecode"
         android:layout_width="84dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="141dp"
-        android:layout_marginStart="212dp"
+        android:layout_marginBottom="264dp"
+        android:layout_toStartOf="@+id/textView6"
+        android:background="#ca732d"
+        android:ems="6"
+        android:text=""
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <Button
+        android:id="@+id/btndekrip"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btndecode"
         android:layout_toStartOf="@+id/btncari"
         android:background="#ca732d"
         android:ems="6"
-        android:text="Decode"
+        android:text="DEKRIP"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
 
