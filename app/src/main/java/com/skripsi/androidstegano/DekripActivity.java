@@ -1,43 +1,52 @@
 package com.skripsi.androidstegano;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
 
+import com.skripsi.algo.BouncyCastleProvider_AES_CBC;
 import com.skripsi.explorer.Filechoice;
 import com.skripsi.explorer.FilechoiceSisip;
+import com.skripsi.stegano.SteganoInformation;
+import com.skripsi.stegano.steganografi;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class DekripActivity extends AppCompatActivity {
 
-    String ambil;
-    String sisip;
     private static final int REQUEST_PATH = 1;
-    File filedata;
-    File filesisip;
-    String namafile;
-    String namasisip;
-    EditText editfile;
-    EditText edithasil;
-    EditText editsisip;
+
+    EditText txtBrowse;
+    Button decodeFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dekrip_fragment);
+        final BouncyCastleProvider_AES_CBC AESncrypt = new BouncyCastleProvider_AES_CBC();
 
-        editfile = (EditText) findViewById(R.id.filedapat);
-        editsisip = (EditText) findViewById(R.id.fileenkrip);
-        edithasil = (EditText) findViewById(R.id.filehasil);
+        txtBrowse = (EditText) findViewById(R.id.txtBrowse);
+        decodeFile = (Button) findViewById(R.id.btndecode);
+        txtBrowse.setEnabled(false);
 
         ImageButton load = (ImageButton) findViewById(R.id.btncari);
         load.setOnClickListener(new View.OnClickListener() {
@@ -50,17 +59,65 @@ public class DekripActivity extends AppCompatActivity {
 
             }
         });
-        ImageButton sisip = (ImageButton) findViewById(R.id.btnfe);
-        sisip.setOnClickListener(new View.OnClickListener() {
 
+        decodeFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getsisip();
-                // TODO Auto-generated method stub
+                try {
+                    SteganoInformation steg;
+                    steganografi stego = null;
+
+                    File fileDecode = new File(txtBrowse.getText().toString());
+                    File dir = new File("/sdcard" + File.separator + "SKRIPSI_DECRYPT");
+
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+
+                    steg = new SteganoInformation(fileDecode);
+
+                    stego.decodeFile(steg, false);
 
 
+                    InputStream inputStream = new FileInputStream(stego.getFile());
+                    String file_out = fileDecode.getName().substring(0, fileDecode.getName().length() - 4);
+                    OutputStream outputStream = new FileOutputStream(dir + File.separator + file_out);
+//
+                    AESncrypt.CBCDecrypt(inputStream, outputStream);
+
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.custom_toast,
+                            (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                    TextView text = (TextView) layout.findViewById(R.id.text);
+                    text.setText("Berhasil Dekrip data !!");
+
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
+
+                } catch (Exception e) {
+
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.custom_toast,
+                            (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                    TextView text = (TextView) layout.findViewById(R.id.text);
+                    text.setText(e.getMessage());
+
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
+
+                    e.printStackTrace();
+                }
             }
         });
+
 
 //        set nama bar layout
 //   getSupportActionBar().setTitle("Encrypt File");
@@ -78,11 +135,6 @@ public class DekripActivity extends AppCompatActivity {
         startActivityForResult(intent1, REQUEST_PATH);
     }
 
-    public void getsisip() {
-        Intent intent2 = new Intent(this, FilechoiceSisip.class);
-        startActivityForResult(intent2, REQUEST_PATH);
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -91,13 +143,16 @@ public class DekripActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
 
                 if (data.getExtras().containsKey("GetFileName")) {
-                    namafile = data.getStringExtra("GetFileName");
-                    editfile.setText(namafile);
-                } else if (data.getExtras().containsKey("GetFileName1")) {
-                    namasisip = data.getStringExtra("GetFileName1");
-                    editsisip.setText(namasisip);
+                    String namafile = data.getStringExtra("GetFileName");
+                    txtBrowse.setText(namafile);
+                    MediaController mediaController = new MediaController(this);
 
-
+                    Uri uri = Uri.parse(txtBrowse.getText().toString());
+                    VideoView simpleVideoView = (VideoView) findViewById(R.id.videoView); // initiate a video view
+                    simpleVideoView.setVideoURI(uri);
+                    simpleVideoView.setMediaController(mediaController);
+                    simpleVideoView.start();
+                    simpleVideoView.canPause();
                 }
             }
         }
