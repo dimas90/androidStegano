@@ -151,7 +151,7 @@
         android:layout_marginBottom="34dp"
         android:background="#ca732d"
         android:ems="6"
-        android:text="Encrypt"
+        android:text="ENKRIP"
 
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
@@ -166,7 +166,7 @@
         android:layout_toStartOf="@+id/btncari"
         android:background="#ca732d"
         android:ems="6"
-        android:text="Encode"
+        android:text="SISIP FILE"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
 
