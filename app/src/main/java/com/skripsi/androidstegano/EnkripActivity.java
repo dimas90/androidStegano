@@ -1,14 +1,11 @@
 package com.skripsi.androidstegano;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,14 +23,14 @@ import android.widget.VideoView;
 import com.skripsi.algo.BouncyCastleProvider_AES_CBC;
 import com.skripsi.explorer.Filechoice;
 import com.skripsi.explorer.FilechoiceSisip;
+import com.skripsi.stegano.VideoSteganography;
+import com.skripsi.stegano.steganografi;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
 
 public class EnkripActivity extends AppCompatActivity {
 
@@ -57,7 +54,6 @@ public class EnkripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final BouncyCastleProvider_AES_CBC AESncrypt = new BouncyCastleProvider_AES_CBC();
-
         setContentView(R.layout.enkrip_fragment);
 
         editfile = (EditText) findViewById(R.id.filedapat);
@@ -151,8 +147,28 @@ public class EnkripActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                try {
+                   steganografi stego = null;
+                   VideoSteganography stegoVid = null;
                    File MasterHasil = new File(edithasil.getText().toString());
                    File MasterEncode = new File(editsisip.getText().toString());
+
+                   stego.encodeFile(MasterEncode, MasterEncode, MasterHasil, 2);
+//                   stegoVid.embedFile(MasterHasil, MasterHasil,MasterEncode,2, "12345678901234567");
+
+                   LayoutInflater inflater = getLayoutInflater();
+                   View layout = inflater.inflate(R.layout.custom_toast,
+                           (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                   TextView text = (TextView) layout.findViewById(R.id.text);
+                   text.setText(stego.getMessage().toString());
+
+                   Toast toast = new Toast(getApplicationContext());
+                   toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                   toast.setDuration(Toast.LENGTH_LONG);
+                   toast.setView(layout);
+                   toast.show();
+
+                   startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
 
 
@@ -220,6 +236,7 @@ public class EnkripActivity extends AppCompatActivity {
                     simpleVideoView.setVideoURI(uri);
                     simpleVideoView.setMediaController(mediaController);
                     simpleVideoView.start();
+                    simpleVideoView.canPause();
 
 
                 }
