@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="78dp"
         android:fontFamily="sans-serif"
         android:text="File Decrypt"
         android:textAlignment="center"
@@ -33,7 +33,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="131dp"
+        android:layout_marginTop="203dp"
         android:text="File"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
@@ -59,84 +59,14 @@
         android:id="@+id/btncari"
         android:layout_width="38dp"
         android:layout_height="37dp"
-        android:layout_alignBottom="@+id/textViewfile"
-        android:layout_alignStart="@+id/btnfe"
-        android:layout_marginBottom="-2dp"
-        android:background="#c9732d"
-        android:textColor="@android:color/background_dark"
-        app:srcCompat="@android:drawable/ic_search_category_default"
-        tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="27dp" />
-
-    <ImageButton
-        android:id="@+id/btnfe"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
-        android:layout_alignBottom="@+id/textViewfile2"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="38dp"
+        android:layout_alignTop="@+id/textViewfile"
+        android:layout_marginEnd="53dp"
         android:background="#c9732d"
         android:textColor="@android:color/background_dark"
         app:srcCompat="@android:drawable/ic_search_category_default"
         tools:layout_editor_absoluteX="300dp"
         tools:layout_editor_absoluteY="27dp" />
-
-    <TextView
-        android:id="@+id/textViewfile2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="194dp"
-        android:text="File Encrypt"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="211dp" />
-
-    <EditText
-        android:id="@+id/fileenkrip"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewfile2"
-        android:layout_alignStart="@+id/filedapat"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="27dp"
-        android:enabled="false"  />
-
-    <TextView
-        android:id="@+id/textViewfile3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textViewfile"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="263dp"
-        android:text="Hasil"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="211dp" />
-
-    <EditText
-        android:id="@+id/filehasil"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/filedapat"
-        android:layout_alignBaseline="@+id/textViewfile3"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:singleLine="true"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="27dp"
-        android:enabled="false" />
 
 
     <Button
@@ -144,11 +74,12 @@
         android:layout_width="84dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="264dp"
-        android:layout_toStartOf="@+id/textView6"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="191dp"
+        android:layout_marginStart="70dp"
         android:background="#ca732d"
         android:ems="6"
-        android:text=""
+        android:text="Decode"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
 
@@ -164,6 +95,11 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="211dp" />
 
+    <VideoView
+        android:id="@+id/videoView3"
+        android:layout_width="150dp"
+        android:layout_height="115dp"
+        android:layout_centerInParent="true" />
 
 
 </RelativeLayout>
