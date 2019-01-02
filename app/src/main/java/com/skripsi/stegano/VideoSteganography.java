@@ -41,25 +41,25 @@ public class VideoSteganography {
     }
 
 
-    public static boolean embedFile(File masterFile, File outputFile, File dataFile, int compression, String password) {
+    public static boolean embedFile(File masterFile, File outputFile, File dataFile, int compression) {
         messageSize = (int) dataFile.length();
 
-        if (password != null && password.length() < 16) {
-            message = "Password should be minimum of 16 Characters";
-            return false;
-        }
+//        if (password != null && password.length() < 16) {
+//            message = "Password should be minimum of 16 Characters";
+//            return false;
+//        }
 
-        if (compression != 0) {
-
-            if (compression < 0) compression = 0;
-            if (compression > 9) compression = 9;
-
-            if (password == null) features = CUF;
-            else features = CEF;
-        } else {
-            if (password == null) features = UUF;
-            else features = UEF;
-        }
+//        if (compression != 0) {
+//
+//            if (compression < 0) compression = 0;
+//            if (compression > 9) compression = 9;
+//
+////            if (password == null) features = CUF;
+//            else features = CEF;
+//        } else {
+////            if (password == null) features = UUF;
+////            else features = UEF;
+//        }
 
         inputFileSize = (int) masterFile.length();
         try {
@@ -74,22 +74,22 @@ public class VideoSteganography {
             in.read(byteArrayIn, 0, inputFileSize);
             in.close();
 
-            String fileName = masterFile.getName();
-            masterExtension = fileName.substring(fileName.length() - 3, fileName.length());
-
-            if (masterExtension.equalsIgnoreCase("jpg")) {
-                // Skip past OFFSET_JPG bytes
-                byteOut.write(byteArrayIn, 0, OFFSET_JPG);
-                inputOutputMarker = OFFSET_JPG;
-            } else if (masterExtension.equalsIgnoreCase("png")) {
-
-                byteOut.write(byteArrayIn, 0, OFFSET_PNG);
-                inputOutputMarker = OFFSET_PNG;
-            } else {
-
-                byteOut.write(byteArrayIn, 0, OFFSET_GIF_BMP_TIF);
-                inputOutputMarker = OFFSET_GIF_BMP_TIF;
-            }
+//            String fileName = masterFile.getName();
+//            masterExtension = fileName.substring(fileName.length() - 3, fileName.length());
+//
+//            if (masterExtension.equalsIgnoreCase("jpg")) {
+//                // Skip past OFFSET_JPG bytes
+//                byteOut.write(byteArrayIn, 0, OFFSET_JPG);
+//                inputOutputMarker = OFFSET_JPG;
+//            } else if (masterExtension.equalsIgnoreCase("png")) {
+//
+//                byteOut.write(byteArrayIn, 0, OFFSET_PNG);
+//                inputOutputMarker = OFFSET_PNG;
+//            } else {
+//
+//                byteOut.write(byteArrayIn, 0, OFFSET_GIF_BMP_TIF);
+//                inputOutputMarker = OFFSET_GIF_BMP_TIF;
+//            }
 
 
             // Convert the 32 bit input file size into byte array
@@ -183,7 +183,7 @@ public class VideoSteganography {
     }
 
     // Retrieves an embedded file from a Master file
-    public static boolean retrieveFile(SteganoInformation info, String password, boolean overwrite) {
+    public static boolean retrieveFile(SteganoInformation info, boolean overwrite) {
         File dataFile = null;
         features = info.getFeatures();
 
@@ -206,40 +206,40 @@ public class VideoSteganography {
             }
 
 
-            if (features == CEF || features == UEF) {
-                password = password.substring(0, 16);
-                byte passwordBytes[] = password.getBytes();
-                cipher = Cipher.getInstance("AES");
-                spec = new SecretKeySpec(passwordBytes, "AES");
-                cipher.init(Cipher.DECRYPT_MODE, spec);
-                try {
-                    fileArray = cipher.doFinal(fileArray);
-                } catch (Exception bp) {
-                    message = "Incorrent Password";
-                    bp.printStackTrace();
-                    return false;
-                }
-                messageSize = fileArray.length;
-            }
+//            if (features == CEF || features == UEF) {
+//                password = password.substring(0, 16);
+//                byte passwordBytes[] = password.getBytes();
+//                cipher = Cipher.getInstance("AES");
+//                spec = new SecretKeySpec(passwordBytes, "AES");
+//                cipher.init(Cipher.DECRYPT_MODE, spec);
+//                try {
+//                    fileArray = cipher.doFinal(fileArray);
+//                } catch (Exception bp) {
+//                    message = "Incorrent Password";
+//                    bp.printStackTrace();
+//                    return false;
+//                }
+//                messageSize = fileArray.length;
+//            }
 
 
-            if (features == CUF || features == CEF) {
-                ByteArrayOutputStream by = new ByteArrayOutputStream();
-                DataOutputStream out = new DataOutputStream(by);
-
-                ZipInputStream zipIn = new ZipInputStream(new ByteArrayInputStream(fileArray));
-                ZipEntry entry = zipIn.getNextEntry();
-                dataFile = new File(entry.getName());
-
-                byteArrayIn = new byte[1024];
-                while ((tempInt = zipIn.read(byteArrayIn, 0, 1024)) != -1)
-                    out.write(byteArrayIn, 0, tempInt);
-
-                zipIn.close();
-                out.close();
-                fileArray = by.toByteArray();
-                messageSize = fileArray.length;
-            }
+//            if (features == CUF || features == CEF) {
+//                ByteArrayOutputStream by = new ByteArrayOutputStream();
+//                DataOutputStream out = new DataOutputStream(by);
+//
+//                ZipInputStream zipIn = new ZipInputStream(new ByteArrayInputStream(fileArray));
+//                ZipEntry entry = zipIn.getNextEntry();
+//                dataFile = new File(entry.getName());
+//
+//                byteArrayIn = new byte[1024];
+//                while ((tempInt = zipIn.read(byteArrayIn, 0, 1024)) != -1)
+//                    out.write(byteArrayIn, 0, tempInt);
+//
+//                zipIn.close();
+//                out.close();
+//                fileArray = by.toByteArray();
+//                messageSize = fileArray.length;
+//            }
 
             info.setDataFile(dataFile);
             if (dataFile.exists() && !overwrite) {

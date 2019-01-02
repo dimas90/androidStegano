@@ -31,10 +31,10 @@ public class SteganoInformation
 	// Mutator methods
 	public void setDataFile(File dataFile)
 	{
-            
+
 		this.dataFile= dataFile;
-                
-                        
+
+
 	}
 	private void retrieveBytes(byte[] bytes, byte[] array, int marker)
 	{
@@ -149,29 +149,29 @@ public class SteganoInformation
 		byte versionArray[]= new byte[3];
 		readBytes(versionArray, byteArray, inputMarker);
 		char []versionTemp= byteToCharArray(versionArray);
-                
+
 		char []ver= new char[4];
 		for(i=0, j=0; i<4; i++)
 			if(i== 1 || i== 2)	ver[i]= '.';
 			else
 			{
 				ver[i]= versionTemp[j++];
-                                
+
 			}
 
 		version= new String(ver);
 
 		// Obtain the features
 		name= new byte[1];
-                
+
 		readBytes(name);
-                
+
 		features= name[0];
                // System.out.print("fitur "+features);
 		// Obtain the compression ratio
 		readBytes(name);
 		name[0]&= 0x7F;
-                
+
 		compressionRatio= name[0];
 
 		name= new byte[4];
@@ -184,15 +184,15 @@ public class SteganoInformation
 			temp&= 0x000000FF;
 			temp<<= i;
 			dataLength|= temp;
-                        
+
 		}
-               
+
 	}
 
 	public boolean isValid()
 	{
 		if(starter.equals("Valid"))
-		{	
+		{
 			return true;
 		}
 		else

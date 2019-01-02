@@ -152,8 +152,8 @@ public class EnkripActivity extends AppCompatActivity {
                    File MasterHasil = new File(edithasil.getText().toString());
                    File MasterEncode = new File(editsisip.getText().toString());
 
-                   stego.encodeFile(MasterEncode, MasterEncode, MasterHasil, 2);
-//                   stegoVid.embedFile(MasterHasil, MasterHasil,MasterEncode,2, "12345678901234567");
+                   stego.encodeFile(MasterEncode, MasterEncode, MasterHasil, 0);
+//                   stegoVid.embedFile(MasterEncode, MasterEncode, MasterHasil,0);
 
                    LayoutInflater inflater = getLayoutInflater();
                    View layout = inflater.inflate(R.layout.custom_toast,

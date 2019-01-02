@@ -61,8 +61,8 @@
         android:layout_height="40dp"
         android:layout_alignTop="@+id/textViewfile"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-8dp"
-        android:layout_marginEnd="46dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="33dp"
         android:background="#c9732d"
         android:textColor="@android:color/background_dark"
         app:srcCompat="@android:drawable/ic_search_category_default"
@@ -90,8 +90,8 @@
         android:layout_height="184dp"
         android:layout_alignEnd="@+id/txtBrowse"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-56dp"
-        android:layout_marginBottom="213dp" />
+        android:layout_marginEnd="-22dp"
+        android:layout_marginBottom="218dp" />
 
 
 </RelativeLayout>

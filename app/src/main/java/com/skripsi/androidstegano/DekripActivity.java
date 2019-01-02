@@ -23,6 +23,7 @@ import com.skripsi.algo.BouncyCastleProvider_AES_CBC;
 import com.skripsi.explorer.Filechoice;
 import com.skripsi.explorer.FilechoiceSisip;
 import com.skripsi.stegano.SteganoInformation;
+import com.skripsi.stegano.VideoSteganography;
 import com.skripsi.stegano.steganografi;
 
 import java.io.File;
@@ -67,6 +68,7 @@ public class DekripActivity extends AppCompatActivity {
                     SteganoInformation steg;
                     steganografi stego = null;
 
+                    VideoSteganography stegoVid = null;
                     File fileDecode = new File(txtBrowse.getText().toString());
                     File dir = new File("/sdcard" + File.separator + "SKRIPSI_DECRYPT");
 
@@ -76,11 +78,13 @@ public class DekripActivity extends AppCompatActivity {
 
                     steg = new SteganoInformation(fileDecode);
 
-                    stego.decodeFile(steg, false);
+                    System.out.println("MASUUUK "+steg.getFile().getName().toString());
 
+                    stego.decodeFile(steg, false);
+//                    stegoVid.retrieveFile(steg,true);
 
                     InputStream inputStream = new FileInputStream(stego.getFile());
-                    String file_out = fileDecode.getName().substring(0, fileDecode.getName().length() - 4);
+                    String file_out = stego.getFile().getName().substring(0, stego.getFile().getName().length() - 4);
                     OutputStream outputStream = new FileOutputStream(dir + File.separator + file_out);
 //
                     AESncrypt.CBCDecrypt(inputStream, outputStream);
@@ -145,14 +149,6 @@ public class DekripActivity extends AppCompatActivity {
                 if (data.getExtras().containsKey("GetFileName")) {
                     String namafile = data.getStringExtra("GetFileName");
                     txtBrowse.setText(namafile);
-                    MediaController mediaController = new MediaController(this);
-
-                    Uri uri = Uri.parse(txtBrowse.getText().toString());
-                    VideoView simpleVideoView = (VideoView) findViewById(R.id.videoView); // initiate a video view
-                    simpleVideoView.setVideoURI(uri);
-                    simpleVideoView.setMediaController(mediaController);
-                    simpleVideoView.start();
-                    simpleVideoView.canPause();
                 }
             }
         }

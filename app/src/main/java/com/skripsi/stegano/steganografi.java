@@ -1,6 +1,7 @@
 package com.skripsi.stegano;
 
 import android.annotation.SuppressLint;
+import android.widget.Toast;
 
 import java.io.*;
 //import java.util.Scanner;
@@ -21,7 +22,7 @@ public class steganografi {
     private static byte features;
     private static int inputFileSize;
     private static int i, j, inputOutputMarker, messageSize, tempInt;
-    private static short compressionRatio = 0;
+    private static short compressionRatio = 1;
     private static byte byte1, byte2, byte3, byteArrayIn[];
     private static ByteArrayOutputStream byteOut;
 
@@ -93,24 +94,24 @@ public class steganografi {
             in.read(fileArray, 0, messageSize);
             in.close();
             //Compress the message if required
-//           if (features == CEF) {
-//                ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
-//                ZipOutputStream zOut = new ZipOutputStream(arrayOutputStream);
-//                ZipEntry entry = new ZipEntry(dataFile.getName());
-//                zOut.setLevel(compression);
-//                zOut.putNextEntry(entry);
-//                zOut.write(fileArray, 0, messageSize);
-//                zOut.closeEntry();
-//                zOut.finish();
-//                zOut.close();
-//                // Get the compressed message byte array
-//                fileArray = arrayOutputStream.toByteArray();
-//                compressionRatio = (short) ((double) fileArray.length / (double) messageSize * 100.0);
-//               messageSize = fileArray.length;
-//            }
-            // Encode 1 byte compression ratio into the output file
-//            writeBytes(new byte[]{(byte) compressionRatio});
-//            StringBuffer fileContents = new StringBuffer();
+           if (features == CEF) {
+                ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+                ZipOutputStream zOut = new ZipOutputStream(arrayOutputStream);
+                ZipEntry entry = new ZipEntry(dataFile.getName());
+                zOut.setLevel(compression);
+                zOut.putNextEntry(entry);
+                zOut.write(fileArray, 0, messageSize);
+                zOut.closeEntry();
+                zOut.finish();
+                zOut.close();
+                // Get the compressed message byte array
+                fileArray = arrayOutputStream.toByteArray();
+                compressionRatio = (short) ((double) fileArray.length / (double) messageSize * 100.0);
+               messageSize = fileArray.length;
+            }
+//             Encode 1 byte compression ratio into the output file
+            writeBytes(new byte[]{(byte) compressionRatio});
+            StringBuffer fileContents = new StringBuffer();
             messageSize = fileArray.length;
 
             tempByte = new byte[4];
@@ -140,14 +141,14 @@ public class steganografi {
 
 
         } catch (EOFException e) {
-            message = e.getMessage().toString();
+            message = e.getMessage();
             e.printStackTrace();
-            return false;
+            return true;
         } catch (Exception e) {
-            message = "Oops!!\nError: " + e.getMessage().toString();
+            message = "Oops!!\nError: " + e.getMessage();
 
             e.printStackTrace();
-            return false;
+            return true;
         }
 
         message = "File '" + dataFile.getName() + "' Encode successfully in file '" + saveFile;
@@ -179,7 +180,7 @@ public class steganografi {
 
             if (messageSize <= 0) {
                 message = "Unexpected size of Encode file: 0.";
-                return false;
+                return true;
             }
             //Decrypt the file if required
 
@@ -204,7 +205,7 @@ public class steganografi {
             info.setDataFile(dataFile);
             if (dataFile.exists() && !overwrite) {
                 message = "File Exists";
-                return false;
+                return true;
             }
 
             // save file dokumen
@@ -220,15 +221,14 @@ public class steganografi {
             out.close();
             outputFile = f;
         } catch (Exception e) {
-            message = "Oops!!\n Error: " + e;
-//            Toast.makeText(conten, message, Toast.LENGTH_LONG).show();
+            message = "Oops!! Error: " + e.getMessage();
             e.printStackTrace();
-            return false;
+            return true;
         }
 
 
 
-//        message = "Decode file " + dataFile.toString() + " Successfuly";
+        message = "Decode file " + dataFile.toString() + " Successfuly";
 //        Toast.makeText(conten, message, Toast.LENGTH_LONG).show();
         return true;
     }
