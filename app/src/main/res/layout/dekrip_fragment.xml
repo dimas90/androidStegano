@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menubaru"
-    tools:context="com.skripsi.androidstegano.DekripAcktivity$PlaceholderFragment" >
+    tools:context="com.skripsi.androidstegano.DekripActivity$PlaceholderFragment" >
 
 
     <TextView
